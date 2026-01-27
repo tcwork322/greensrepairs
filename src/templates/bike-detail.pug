@@ -8,10 +8,11 @@ html(lang='en')
     meta(property='og:title' content=`${bike.name} - Greens Repairs Ltd`)
     meta(property='og:description' content=bike.description)
     meta(property='og:image' content=bike.image)
+    - var base = typeof basePath !== 'undefined' ? basePath : '/'
     link(rel='preconnect' href='https://fonts.googleapis.com')
     link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
     link(href='https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap' rel='stylesheet')
-    link(rel='stylesheet' href='/css/styles.css')
+    link(rel='stylesheet' href=`${base}css/styles.css`)
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
   
   body
@@ -22,7 +23,7 @@ html(lang='en')
         //- Back to Shop
         section.breadcrumb
           .container
-            a.back-link(href='/shop.html')
+            a.back-link(href=`${base}shop.html`)
               i.fas.fa-arrow-left
               |  Back to Shop
 
@@ -83,11 +84,11 @@ html(lang='en')
                     a.btn.btn-secondary(href=`mailto:Greens.repairs9@outlook.com?subject=Inquiry about ${bike.name}`)
                       i.fas.fa-envelope
                       |  Email Us
-                    a.btn.btn-outline(href='/contact.html')
+                    a.btn.btn-outline(href=`${base}contact.html`)
                       i.fas.fa-map-marker-alt
                       |  Visit Our Shop
 
         include ../components/footer.pug
 
-    script(type='module' src='/js/script.js')
-    script(type='module' src='/js/bike-swiper.js')
+    script(type='module' src=`${base}js/script.js`)
+    script(type='module' src=`${base}js/bike-swiper.js`)

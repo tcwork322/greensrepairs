@@ -16,13 +16,30 @@ try {
   // Bikes directory might not exist yet
 }
 
+// Get repository name from environment or default
+const getBasePath = () => {
+  if (process.env.NODE_ENV !== 'production') return '/';
+  
+  // Try to get from GitHub Actions environment
+  if (process.env.GITHUB_REPOSITORY) {
+    const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+    return `/${repoName}/`;
+  }
+  
+  // Fallback: Change this to your actual repository name
+  return '/greensrepairs/';
+};
+
+const basePath = getBasePath();
+
 export default defineConfig({
-  // Set base path for GitHub Pages
-  // Change 'greensrepairs' to your actual repository name
-  base: process.env.NODE_ENV === 'production' ? '/greensrepairs/' : '/',
+  base: basePath,
   
   plugins: [
-    pugPlugin()
+    pugPlugin({}, {
+      // Pass base path to all Pug templates
+      basePath: basePath
+    })
   ],
   build: {
     rollupOptions: {

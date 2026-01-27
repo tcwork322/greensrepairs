@@ -43,5 +43,6 @@ block content
   include src/components/footer.pug
 
 block append scripts
-  script(src='/js/bikes-data.js')
-  script(src='/js/shop.js')
+  - var base = typeof basePath !== 'undefined' ? basePath : '/'
+  script(src=`${base}js/bikes-data.js`)
+  script(src=`${base}js/shop.js`)

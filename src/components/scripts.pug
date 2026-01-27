@@ -1,5 +1,6 @@
 //- Main script (GSAP imported via npm in the JS file)
-script(type='module' src='/js/script.js')
+- var base = typeof basePath !== 'undefined' ? basePath : '/'
+script(type='module' src=`${base}js/script.js`)
 if additionalScripts
   each script in additionalScripts
     script(src=script)

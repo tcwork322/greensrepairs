@@ -48,12 +48,28 @@ const compiledFunction = pug.compileFile(templatePath, {
   basedir: projectRoot
 });
 
+// Get base path (same logic as vite.config.js)
+const getBasePath = () => {
+  if (process.env.NODE_ENV !== 'production') return '/';
+  
+  // Try to get from GitHub Actions environment
+  if (process.env.GITHUB_REPOSITORY) {
+    const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+    return `/${repoName}/`;
+  }
+  
+  // Fallback: Change this to your actual repository name
+  return '/greensrepairs/';
+};
+
+const basePath = getBasePath();
+
 // Generate a page for each bike
 bikesData.forEach((bike) => {
   console.log(`Generating page for: ${bike.name}`);
   
   // Generate HTML from template
-  const html = compiledFunction({ bike });
+  const html = compiledFunction({ bike, basePath });
   
   // Write to bikes directory using slug
   const filename = `${bike.slug}.html`;

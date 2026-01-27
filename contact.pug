@@ -106,4 +106,5 @@ block content
   include src/components/footer.pug
 
 block append scripts
-  script(src='/js/contact.js')
+  - var base = typeof basePath !== 'undefined' ? basePath : '/'
+  script(src=`${base}js/contact.js`)

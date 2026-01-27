@@ -1,18 +1,19 @@
+- var base = typeof basePath !== 'undefined' ? basePath : '/'
 footer.footer
   .container
     .footer-content
       .footer-section
-        img.footer-logo(src='/images/site-logo-cropped.png' alt='Greens Repairs Ltd')
+        img.footer-logo(src=`${base}images/site-logo-cropped.png` alt='Greens Repairs Ltd')
         p Quality refurbished bikes and expert repair services in Manchester.
       .footer-section
         h4 Quick Links
         ul
           li
-            a(href='/') Home
+            a(href=`${base}`) Home
           li
-            a(href='/shop.html') Shop Bikes
+            a(href=`${base}shop.html`) Shop Bikes
           li
-            a(href='/contact.html') Contact
+            a(href=`${base}contact.html`) Contact
       .footer-section
         h4 Contact Information
         ul.contact-info
