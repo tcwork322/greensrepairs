@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-bikes && vite build && npm run copy-bikes",
+    "build": "node scripts/build.js",
     "preview": "vite preview",
     "generate-bikes": "node scripts/generate-bikes.js",
-    "copy-bikes": "node scripts/copy-bikes.js",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "keywords": [

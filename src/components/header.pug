@@ -1,9 +1,8 @@
-- var base = typeof basePath !== 'undefined' ? basePath : '/'
 nav.navbar
   .container
     .nav-wrapper.flex.items-center.justify-between
-      a.logo.logo-outer-wrapper(href=`${base}` aria-label='Greens Repairs Ltd Home')
-        img(src=`${base}images/site-logo-cropped.png` alt='Greens Repairs Ltd')
+      a.logo.logo-outer-wrapper(href='/' aria-label='Greens Repairs Ltd Home')
+        img(src='/images/site-logo-cropped.png' alt='Greens Repairs Ltd')
       button.fold-out-menu-toggle(
         aria-label='Toggle navigation menu'
         aria-expanded='false'
@@ -18,8 +17,8 @@ nav.navbar
 .fold-out-menu.full-screen-menu(id='main-navigation' role='navigation' aria-label='Main Navigation')
   ul.fold-out-menu-list
     li.fold-out-menu-item
-      a(href=`${base}` aria-label='Go to home page') Home
+      a(href='/' aria-label='Go to home page') Home
     li.fold-out-menu-item
-      a(href=`${base}shop.html` aria-label='Browse refurbished bikes') Shop Bikes
+      a(href='/shop.html' aria-label='Browse refurbished bikes') Shop Bikes
     li.fold-out-menu-item
-      a(href=`${base}contact.html` aria-label='Contact us') Contact
+      a(href='/contact.html' aria-label='Contact us') Contact
