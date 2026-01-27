@@ -19,9 +19,8 @@ try {
 }
 
 export default defineConfig({
-  // Set base path for GitHub Pages
-  // Change 'greensrepairs' to your actual repository name
-  base: process.env.NODE_ENV === 'production' ? '/greensrepairs/' : '/',
+  // Base path for GitHub Pages (set to '/' for root deployment)
+  base: '/',
   
   plugins: [
     pugPlugin()
