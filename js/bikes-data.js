@@ -1,5 +1,5 @@
 // Bike inventory data with accurate specifications
-const bikesData = [
+export const bikesData = [
     {
         id: 1,
         name: "Trek FX 3 Disc Hybrid",

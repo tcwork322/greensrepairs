@@ -1,4 +1,6 @@
 // Shop page functionality
+import { bikesData } from './bikes-data.js';
+
 const BIKES_PER_PAGE = 12;
 let currentPage = 1;
 
