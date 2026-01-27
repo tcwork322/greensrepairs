@@ -1,3 +1,6 @@
+// Import CSS so Vite bundles it and injects it in the head
+import '../css/styles.css';
+
 // Import GSAP and plugins from npm
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
