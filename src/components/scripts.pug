@@ -1,0 +1,5 @@
+//- Main script (GSAP imported via npm in the JS file)
+script(type='module' src='/js/script.js')
+if additionalScripts
+  each script in additionalScripts
+    script(src=script)

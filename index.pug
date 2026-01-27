@@ -1,0 +1,105 @@
+extends src/templates/layout.pug
+
+block variables
+  - var pageTitle = 'Greens Repairs Ltd - Quality Refurbished Bikes & Expert Repair Services in Manchester'
+  - var metaDescription = 'Professional bicycle repairs and expertly refurbished bikes in Manchester. Quality guaranteed, fair prices, and expert service. Browse our selection or get in touch for repairs.'
+  - var ogTitle = 'Greens Repairs Ltd - Refurbished Bikes & Repair Services'
+  - var ogDescription = 'Manchester\'s trusted bike shop for quality refurbished bikes and expert repair services.'
+  - var ogImage = '/images/hero-bg.jpg'
+
+block content
+  //- Hero Section
+  section.hero
+    .hero-overlay
+    .hero-container
+      .hero-content
+        .hero-badge
+          i.fas.fa-bicycle
+          span Manchester's Trusted Bike Shop
+        h1.hero-title
+          | Quality Refurbished Bikes
+          br
+          span.highlight Expert Repair Services
+        p.hero-description
+          | Professional bicycle repairs and expertly refurbished bikes in Manchester. 
+          | Get back on the road with confidence.
+        .hero-buttons
+          a.btn.btn-hero-primary(href='/shop.html')
+            span Browse Our Bikes
+            i.fas.fa-arrow-right
+          a.btn.btn-hero-secondary(href='/contact.html')
+            i.fas.fa-phone
+            span Get in Touch
+        .hero-features
+          .feature-item
+            i.fas.fa-check-circle
+            span Quality Guaranteed
+          .feature-item
+            i.fas.fa-tools
+            span Expert Service
+          .feature-item
+            i.fas.fa-tag
+            span Fair Prices
+    .hero-scroll
+      i.fas.fa-chevron-down
+
+  //- Services Section
+  section.services
+    .container
+      h2.section-title Our Services
+      p.section-intro From expert repairs to quality refurbished bikes, we're your one-stop shop for all things cycling in Manchester. Every service is delivered with care and expertise.
+      .services-grid
+        .service-card
+          .service-icon
+            i.fas.fa-wrench
+          h3 Expert Repairs
+          p Professional bike repairs and maintenance services. From basic tune-ups to complete overhauls, we've got you covered.
+        .service-card
+          .service-icon
+            i.fas.fa-bicycle
+          h3 Refurbished Bikes
+          p Quality second-hand bikes, expertly refurbished and ready to ride. Each bike is thoroughly inspected and serviced.
+        .service-card
+          .service-icon
+            i.fas.fa-cogs
+          h3 Custom Builds
+          p Need something specific? We can help you build or modify your bike to meet your exact requirements.
+
+  //- About Section
+  section.about
+    .container
+      .about-content
+        .about-text
+          h2 About Greens Repairs
+          p Based in Manchester, Greens Repairs Ltd specializes in bicycle repairs and refurbished bikes. With years of experience in the cycling industry, we're passionate about keeping bikes on the road and helping people find quality, affordable bicycles.
+          p Whether you need a quick repair or you're looking for a refurbished bike, we're here to help. All our refurbished bikes are thoroughly inspected, serviced, and come ready to ride.
+          .about-features
+            .feature
+              i.fas.fa-check-circle
+              span Quality Guaranteed
+            .feature
+              i.fas.fa-check-circle
+              span Expert Service
+            .feature
+              i.fas.fa-check-circle
+              span Fair Prices
+        .about-image
+          img(src='/images/about-workshop.jpg' alt='Bike repair workshop')
+
+  //- Contact CTA Section
+  section.contact-cta
+    .container
+      h2 Get Your Bike Repaired or Find Your Next Ride
+      p Contact us today for repairs or browse our selection of refurbished bikes
+      .cta-buttons
+        a.btn.btn-primary(href='tel:+447402665293')
+          i.fas.fa-phone
+          |  Call Us
+        a.btn.btn-secondary(href='mailto:Greens.repairs9@outlook.com')
+          i.fas.fa-envelope
+          |  Email Us
+        a.btn.btn-outline(href='/contact.html')
+          i.fas.fa-map-marker-alt
+          |  Visit Us
+
+  include src/components/footer.pug

@@ -1,0 +1,47 @@
+extends src/templates/layout.pug
+
+block variables
+  - var pageTitle = 'Shop Refurbished Bikes - Greens Repairs Ltd'
+  - var metaDescription = 'Browse our selection of quality refurbished bikes. All bikes are expertly serviced and ready to ride. Mountain bikes, road bikes, hybrids and more in Manchester.'
+  - var ogTitle = 'Shop Refurbished Bikes - Greens Repairs Ltd'
+  - var ogDescription = 'Quality second-hand bikes, expertly refurbished and ready to ride.'
+  - var ogImage = '/images/bikes/bike-01.jpg'
+
+block content
+  //- Hero Section
+  section.hero.hero-shop
+    .hero-overlay
+    .hero-container
+      .hero-content
+        .hero-badge
+          i.fas.fa-bicycle
+          span Browse Our Collection
+        h1.hero-title
+          | Find Your Perfect
+          br
+          span.highlight Refurbished Bike
+        p.hero-description
+          | Quality second-hand bikes, expertly serviced and ready to ride. 
+          | From mountain bikes to road bikes, all at great prices.
+        .hero-buttons
+          a.btn.btn-hero-primary(href='#bikes')
+            span Browse Bikes
+            i.fas.fa-arrow-down
+    .hero-scroll
+      i.fas.fa-chevron-down
+
+  //- Bikes Grid
+  section.bikes-section#bikes
+    .container
+      .bikes-grid#bikesGrid
+        //- Bikes will be loaded here by JavaScript
+
+      //- Pagination
+      .pagination#pagination
+        //- Pagination will be loaded here by JavaScript
+
+  include src/components/footer.pug
+
+block append scripts
+  script(src='/js/bikes-data.js')
+  script(src='/js/shop.js')

@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  block variables
+  include ../components/head.pug
+  
+  body
+    include ../components/header.pug
+    
+    #smooth-wrapper
+      #smooth-content
+        block content
+    
+    include ../components/scripts.pug
+    block scripts

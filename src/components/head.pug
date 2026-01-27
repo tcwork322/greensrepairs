@@ -1,0 +1,21 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title= pageTitle || 'Greens Repairs Ltd - Refurbished Bikes & Service'
+  if metaDescription
+    meta(name='description' content=metaDescription)
+  else
+    meta(name='description' content='Quality refurbished bikes and expert repair services in Manchester.')
+  if ogTitle
+    meta(property='og:title' content=ogTitle)
+  if ogDescription
+    meta(property='og:description' content=ogDescription)
+  if ogImage
+    meta(property='og:image' content=ogImage)
+  link(rel='icon' type='image/x-icon' href='/favicon.ico')
+  link(rel='apple-touch-icon' sizes='180x180' href='/images/site-logo-cropped.png')
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+  link(href='https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap' rel='stylesheet')
+  link(rel='stylesheet' href='/css/styles.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')

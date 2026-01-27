@@ -1,0 +1,91 @@
+// Shop page functionality
+const BIKES_PER_PAGE = 12;
+let currentPage = 1;
+
+// Function to generate URL-friendly slug
+function generateSlug(name) {
+    return name
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+}
+
+function displayBikes(page = 1) {
+    const bikesGrid = document.getElementById('bikesGrid');
+    if (!bikesGrid) return;
+
+    const startIndex = (page - 1) * BIKES_PER_PAGE;
+    const endIndex = startIndex + BIKES_PER_PAGE;
+    const bikesToDisplay = bikesData.slice(startIndex, endIndex);
+
+    bikesGrid.innerHTML = bikesToDisplay.map(bike => `
+        <a href="/bikes/${generateSlug(bike.name)}.html" class="bike-card">
+            <img src="${bike.image}" alt="${bike.name}" class="bike-image">
+            <div class="bike-info">
+                <span class="bike-type">${bike.type}</span>
+                <h3>${bike.name}</h3>
+                <ul class="bike-features">
+                    <li><i class="fas fa-check"></i> ${bike.specs.gears}</li>
+                    <li><i class="fas fa-check"></i> ${bike.specs.brakes}</li>
+                    <li><i class="fas fa-check"></i> ${bike.condition} condition</li>
+                </ul>
+                <p class="bike-price">£${bike.price}</p>
+            </div>
+        </a>
+    `).join('');
+
+    displayPagination(page);
+}
+
+function displayPagination(currentPage) {
+    const pagination = document.getElementById('pagination');
+    if (!pagination) return;
+
+    const totalPages = Math.ceil(bikesData.length / BIKES_PER_PAGE);
+    
+    let paginationHTML = '';
+
+    // Previous button
+    paginationHTML += `
+        <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    `;
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `
+            <button onclick="changePage(${i})" ${currentPage === i ? 'class="active"' : ''}>
+                ${i}
+            </button>
+        `;
+    }
+
+    // Next button
+    paginationHTML += `
+        <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    `;
+
+    pagination.innerHTML = paginationHTML;
+}
+
+function changePage(page) {
+    const totalPages = Math.ceil(bikesData.length / BIKES_PER_PAGE);
+    
+    if (page < 1 || page > totalPages) return;
+    
+    currentPage = page;
+    displayBikes(currentPage);
+    
+    // Scroll to top of bikes section
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Initialize shop page
+document.addEventListener('DOMContentLoaded', function() {
+    displayBikes(1);
+});

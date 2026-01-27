@@ -1,0 +1,30 @@
+{
+  "name": "greensrepairs",
+  "version": "1.0.0",
+  "description": "Greens Repairs Ltd - Bike Shop Website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/generate-bikes.js && vite build",
+    "preview": "vite preview",
+    "generate-bikes": "node scripts/generate-bikes.js",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "keywords": [
+    "bike",
+    "repair",
+    "shop"
+  ],
+  "author": "Greens Repairs Ltd",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "pug": "^3.0.2",
+    "vite": "^5.0.12",
+    "vite-plugin-pug": "^0.3.2"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "swiper": "^12.0.3"
+  }
+}

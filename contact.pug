@@ -1,0 +1,109 @@
+extends src/templates/layout.pug
+
+block variables
+  - var pageTitle = 'Contact Us - Greens Repairs Ltd'
+  - var metaDescription = 'Get in touch with Greens Repairs Ltd in Manchester. Call us at +44 7402 665293, email Greens.repairs9@outlook.com, or visit us at 5 Hollinsclough Close, M22 4HS.'
+  - var ogTitle = 'Contact Greens Repairs Ltd'
+  - var ogDescription = 'Get in touch for bike repairs or to purchase a refurbished bike.'
+
+block content
+  //- Hero Section
+  section.hero.hero-contact
+    .hero-overlay
+    .hero-container
+      .hero-content
+        .hero-badge
+          i.fas.fa-comments
+          span We're Here to Help
+        h1.hero-title
+          | Get in Touch
+          br
+          span.highlight With Greens Repairs
+        p.hero-description
+          | Have questions about our bikes or repair services? We'd love to hear from you. 
+          | Call, email, or visit us in Manchester.
+        .hero-buttons
+          a.btn.btn-hero-primary(href='tel:+447402665293')
+            i.fas.fa-phone
+            span Call Us Now
+          a.btn.btn-hero-secondary(href='#contact-info')
+            i.fas.fa-arrow-down
+            span Contact Info
+    .hero-scroll
+      i.fas.fa-chevron-down
+
+  //- Contact Section
+  section.contact-section#contact-info
+    .container
+      .contact-grid
+        .contact-info-cards
+          .contact-card
+            .contact-icon
+              i.fas.fa-phone
+            h3 Call Us
+            p
+              a(href='tel:+447402665293') +44 7402 665293
+            span.contact-note Monday - Saturday: 9am - 6pm
+
+          .contact-card
+            .contact-icon
+              i.fas.fa-envelope
+            h3 Email Us
+            p
+              a(href='mailto:Greens.repairs9@outlook.com') Greens.repairs9@outlook.com
+            span.contact-note We'll respond within 24 hours
+
+          .contact-card
+            .contact-icon
+              i.fas.fa-map-marker-alt
+            h3 Visit Us
+            p
+              | 5 Hollinsclough Close
+              br
+              | Manchester M22 4HS
+              br
+              | England
+            span.contact-note By appointment
+
+        .contact-form-section
+          h2 Send Us a Message
+          p.form-description Have a question about our bikes or repair services? We'd love to hear from you!
+          form.contact-form#contactForm
+            .form-group
+              label(for='name') Name
+              input(type='text' id='name' name='name' required)
+            .form-group
+              label(for='email') Email
+              input(type='email' id='email' name='email' required)
+            .form-group
+              label(for='phone') Phone Number
+              input(type='tel' id='phone' name='phone')
+            .form-group
+              label(for='subject') Subject
+              select(id='subject' name='subject' required)
+                option(value='') Select a subject
+                option(value='repair') Bike Repair Inquiry
+                option(value='purchase') Purchase Inquiry
+                option(value='general') General Question
+                option(value='other') Other
+            .form-group
+              label(for='message') Message
+              textarea(id='message' name='message' rows='5' required)
+            button.btn.btn-primary(type='submit')
+              i.fas.fa-paper-plane
+              |  Send Message
+
+  //- Map Section
+  section.map-section
+    .container
+      h2.section-title Find Us
+      .map-placeholder
+        i.fas.fa-map-marked-alt
+        p 5 Hollinsclough Close, Manchester M22 4HS
+        a.btn.btn-outline(href='https://www.google.com/maps/search/?api=1&query=5+Hollinsclough+Close+Manchester+M22+4HS' target='_blank')
+          | Open in Google Maps
+
+  include src/components/footer.pug
+
+block append scripts
+  script(src='/js/contact.js')
