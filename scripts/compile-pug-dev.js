@@ -21,6 +21,7 @@ execSync('node scripts/generate-bikes.js', { cwd: projectRoot, stdio: 'inherit' 
 const pugFiles = [
   { input: 'index.pug', output: 'index.html' },
   { input: 'shop.pug', output: 'shop.html' },
+  { input: 'bikes.pug', output: 'bikes.html' },
   { input: 'contact.pug', output: 'contact.html' }
 ];
 

@@ -1,0 +1,46 @@
+extends src/templates/layout.pug
+
+block variables
+  - var pageTitle = 'Bikes - Mountain Bikes, Hybrids & Fixies - Greens Repairs Ltd'
+  - var metaDescription = 'Browse refurbished mountain bikes, hybrids and fixies. Trek Marlin, Specialized Rockhopper, Fuji Feather and more. Manchester.'
+  - var ogTitle = 'Bikes - Mountain Bikes, Hybrids & Fixies - Greens Repairs Ltd'
+  - var ogDescription = 'Mountain bikes, hybrids and single-speed bikes. Refurbished and ready to ride.'
+  - var ogImage = '/images/bikes/trek-marlin-7.jpg'
+
+block content
+  //- Hero Section
+  section.hero.hero-shop.hero-bikes
+    .hero-overlay
+    .hero-container
+      .hero-content
+        .hero-badge
+          i.fas.fa-bicycle
+          span Mountain Bikes, Fixies & More
+        h1.hero-title
+          | Bikes
+          br
+          span.highlight Non-Electric Range
+        p.hero-description
+          | Hardtail mountain bikes, hybrids and single-speeds. 
+          | Refurbished and serviced, ready to ride.
+        .hero-buttons
+          a.btn.btn-hero-primary(href='#bikes')
+            span Browse Bikes
+            i.fas.fa-arrow-down
+    .hero-scroll
+      i.fas.fa-chevron-down
+
+  //- Bikes Grid
+  section.bikes-section#bikes
+    .container
+      .bikes-grid#bikesGrid
+        //- Bikes will be loaded here by JavaScript
+
+      //- Pagination
+      .pagination#pagination
+        //- Pagination will be loaded here by JavaScript
+
+  include src/components/footer.pug
+
+block append scripts
+  script(type='module' src='/js/bikes.js')

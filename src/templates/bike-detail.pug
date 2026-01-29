@@ -8,12 +8,14 @@ block variables
   - var ogImage = bike.images && bike.images[0] ? bike.images[0] : bike.image
 
 block content
-  //- Back to Shop
+  //- Back link (electric → shop, regular → bikes)
   section.breadcrumb
     .container
-      a.back-link(href='/shop.html')
+      - var backHref = typeof backHref !== 'undefined' ? backHref : '/shop.html'
+      - var backLabel = typeof backLabel !== 'undefined' ? backLabel : 'Back to Electric Bikes'
+      a.back-link(href=backHref)
         i.fas.fa-arrow-left
-        |  Back to Shop
+        |  #{backLabel}
 
   //- Bike Detail
   section.bike-detail

@@ -29,6 +29,7 @@ console.log('📝 Step 2: Compiling Pug templates to HTML...');
 const pugFiles = [
   { input: 'index.pug', output: 'index.html' },
   { input: 'shop.pug', output: 'shop.html' },
+  { input: 'bikes.pug', output: 'bikes.html' },
   { input: 'contact.pug', output: 'contact.html' }
 ];
 

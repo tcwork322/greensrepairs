@@ -29,6 +29,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         shop: resolve(__dirname, 'shop.html'),
+        bikes: resolve(__dirname, 'bikes.html'),
         contact: resolve(__dirname, 'contact.html'),
         ...bikePages
       }
