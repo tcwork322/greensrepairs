@@ -370,7 +370,7 @@ body {
     justify-content: center;
     position: relative;
     background: linear-gradient(135deg, rgba(45, 80, 22, 0.85), rgba(26, 26, 26, 0.75)), 
-                url('./hero-bg.jpg');
+                url('https://statuesque-sable-b1f51d.netlify.app/images/hero-bg-two.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -380,7 +380,7 @@ body {
 
 .hero-shop {
     background: linear-gradient(135deg, rgba(45, 80, 22, 0.85), rgba(26, 26, 26, 0.75)), 
-    url('./images/wp13715535-sur-ron-wallpapers.jpg');
+    url('https://statuesque-sable-b1f51d.netlify.app/images/wp13715535-sur-ron-wallpapers.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
