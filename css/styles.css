@@ -370,7 +370,7 @@ body {
     justify-content: center;
     position: relative;
     background: linear-gradient(135deg, rgba(45, 80, 22, 0.85), rgba(26, 26, 26, 0.75)), 
-                url('./images/hero-bg-two.jpg');
+                url('./images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
