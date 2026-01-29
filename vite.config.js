@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite';
-import pugPlugin from 'vite-plugin-pug';
 import { resolve } from 'path';
 import { readdirSync, existsSync } from 'fs';
 
-// Get all generated bike HTML files
+// Get all generated bike HTML files (from generate-bikes + compile-pug-dev)
 const bikePages = {};
 try {
   const bikesDir = resolve(__dirname, 'bikes');
@@ -19,12 +18,10 @@ try {
 }
 
 export default defineConfig({
-  // Base path for GitHub Pages (set to '/' for root deployment)
+  // Base path. Use '/greensrepairs/' for GitHub Pages at user.github.io/greensrepairs
   base: '/',
   
-  plugins: [
-    pugPlugin()
-  ],
+  plugins: [],
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

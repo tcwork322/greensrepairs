@@ -124,32 +124,59 @@ function fixHtmlFile(filePath) {
     scripts.push(match[0]);
   }
   
-  // Only proceed if we found both CSS and scripts
-  if (cssLinks.length === 0 || scripts.length === 0) return;
+  // Only proceed if we found CSS or scripts
+  if (cssLinks.length === 0 && scripts.length === 0) return;
   
   // Remove CSS links and scripts from HTML
   let newHtml = html;
   cssLinks.forEach(link => {
-    // Escape special regex characters and remove the link
     const escapedLink = link.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     newHtml = newHtml.replace(new RegExp(escapedLink, 'g'), '');
   });
   scripts.forEach(script => {
-    // Escape special regex characters and remove the script
     const escapedScript = script.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     newHtml = newHtml.replace(new RegExp(escapedScript.replace(/\n/g, '\\n'), 'g'), '');
   });
   
-  // Clean up extra blank lines (3+ consecutive newlines become 2)
+  // Clean up extra blank lines
   newHtml = newHtml.replace(/\n{3,}/g, '\n\n');
   
   // Find insertion point (before </head>)
   const headCloseIndex = newHtml.indexOf('</head>');
   if (headCloseIndex !== -1) {
-    // Reconstruct with CSS and scripts in the right place
-    const cssHtml = cssLinks.join('\n    ');
-    const scriptsHtml = scripts.join('\n    ');
-    const insertion = '\n    ' + cssHtml + '\n    ' + scriptsHtml;
+    // Add preload hints for CSS files (helps browser prioritize CSS loading)
+    const cssPreloads = [];
+    cssLinks.forEach(link => {
+      const hrefMatch = link.match(/href=["']([^"']+)["']/);
+      if (hrefMatch && hrefMatch[1].startsWith('/assets/')) {
+        // Add preload for CSS
+        cssPreloads.push(`<link rel="preload" href="${hrefMatch[1]}" as="style">`);
+      }
+    });
+    
+    // Ensure CSS links don't have async/defer (they should load synchronously)
+    const cssHtml = cssLinks.map(link => {
+      // Remove any async/defer from CSS links
+      return link.replace(/\s+(async|defer)=["'][^"']*["']/gi, '');
+    }).join('\n    ');
+    
+    // Ensure scripts are deferred (type="module" scripts are already deferred by default)
+    const scriptsHtml = scripts.map(script => {
+      // type="module" scripts are automatically deferred, but we can be explicit
+      if (script.includes('type="module"') && !script.includes('defer')) {
+        // Don't add defer to module scripts - they're already deferred
+        return script;
+      }
+      // For non-module scripts, ensure they're deferred
+      if (!script.includes('defer') && !script.includes('async')) {
+        return script.replace('>', ' defer>');
+      }
+      return script;
+    }).join('\n    ');
+    
+    // Insert: preloads first, then CSS, then scripts
+    const preloadHtml = cssPreloads.length > 0 ? cssPreloads.join('\n    ') + '\n    ' : '';
+    const insertion = '\n    ' + preloadHtml + cssHtml + '\n    ' + scriptsHtml;
     
     // Insert before </head>, trimming any trailing whitespace
     const beforeInsert = newHtml.slice(0, headCloseIndex).trimEnd();

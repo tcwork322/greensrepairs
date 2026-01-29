@@ -1,18 +1,9 @@
 // Shop page functionality
 import { bikesData } from './bikes-data.js';
+import { generateSlug } from './utils.js';
 
 const BIKES_PER_PAGE = 12;
 let currentPage = 1;
-
-// Function to generate URL-friendly slug
-function generateSlug(name) {
-    return name
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-}
 
 function displayBikes(page = 1) {
     const bikesGrid = document.getElementById('bikesGrid');
@@ -41,17 +32,19 @@ function displayBikes(page = 1) {
     displayPagination(page);
 }
 
-function displayPagination(currentPage) {
+function displayPagination(page) {
     const pagination = document.getElementById('pagination');
     if (!pagination) return;
 
     const totalPages = Math.ceil(bikesData.length / BIKES_PER_PAGE);
-    
+    const prevPage = page - 1;
+    const nextPage = page + 1;
+
     let paginationHTML = '';
 
     // Previous button
     paginationHTML += `
-        <button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+        <button type="button" data-page="${prevPage}" ${page === 1 ? 'disabled' : ''} aria-label="Previous page">
             <i class="fas fa-chevron-left"></i>
         </button>
     `;
@@ -59,7 +52,7 @@ function displayPagination(currentPage) {
     // Page numbers
     for (let i = 1; i <= totalPages; i++) {
         paginationHTML += `
-            <button onclick="changePage(${i})" ${currentPage === i ? 'class="active"' : ''}>
+            <button type="button" data-page="${i}" ${page === i ? 'class="active"' : ''} aria-label="Page ${i}" ${page === i ? 'aria-current="page"' : ''}>
                 ${i}
             </button>
         `;
@@ -67,7 +60,7 @@ function displayPagination(currentPage) {
 
     // Next button
     paginationHTML += `
-        <button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+        <button type="button" data-page="${nextPage}" ${page === totalPages ? 'disabled' : ''} aria-label="Next page">
             <i class="fas fa-chevron-right"></i>
         </button>
     `;
@@ -90,4 +83,15 @@ function changePage(page) {
 // Initialize shop page
 document.addEventListener('DOMContentLoaded', function() {
     displayBikes(1);
+
+    // Pagination: event delegation (no inline handlers)
+    const pagination = document.getElementById('pagination');
+    if (pagination) {
+        pagination.addEventListener('click', function(e) {
+            const btn = e.target.closest('button[data-page]');
+            if (!btn || btn.disabled) return;
+            const page = parseInt(btn.dataset.page, 10);
+            if (!Number.isNaN(page)) changePage(page);
+        });
+    }
 });

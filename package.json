@@ -4,7 +4,9 @@
   "description": "Greens Repairs Ltd - Bike Shop Website",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/compile-pug-dev.js && concurrently \"vite\" \"npm run watch:pug\"",
+    "watch:pug": "nodemon --watch . --ext pug,js --ignore node_modules --ignore dist --ignore bikes --exec \"npm run build:pug\"",
+    "build:pug": "node scripts/compile-pug-dev.js",
     "build": "node scripts/build.js",
     "preview": "vite preview",
     "generate-bikes": "node scripts/generate-bikes.js",
@@ -18,10 +20,11 @@
   "author": "Greens Repairs Ltd",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^9.1.0",
     "gh-pages": "^6.3.0",
+    "nodemon": "^3.1.0",
     "pug": "^3.0.2",
-    "vite": "^5.0.12",
-    "vite-plugin-pug": "^0.3.2"
+    "vite": "^5.0.12"
   },
   "dependencies": {
     "gsap": "^3.14.2",

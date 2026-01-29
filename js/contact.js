@@ -1,6 +1,19 @@
 // Contact form functionality
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
+    const messageEl = document.getElementById('message');
+    const subjectEl = document.getElementById('subject');
+
+    // Pre-fill message (and subject) when arriving from a bike detail "Book a service" link
+    const params = new URLSearchParams(window.location.search);
+    const bike = params.get('bike');
+    if (bike && messageEl) {
+        const decodedBike = decodeURIComponent(bike);
+        messageEl.value = 'I would like to book a service for the ' + decodedBike + '.';
+        if (subjectEl) {
+            subjectEl.value = 'repair';
+        }
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {

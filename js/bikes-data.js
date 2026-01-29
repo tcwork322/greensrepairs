@@ -1,371 +1,158 @@
-// Bike inventory data with accurate specifications
+// Premium electric bikes and Surrons – accurate specifications (verified)
+// Image filenames: place matching photos in /images/bikes/ – see IMAGES.md for sources
+const BIKE_IMG = (name) => `/images/bikes/${name}`;
+
 export const bikesData = [
     {
         id: 1,
-        name: "Trek FX 3 Disc Hybrid",
-        type: "Hybrid",
-        price: 485,
-        condition: "Excellent",
-        image: "/images/bikes/bike-01.jpg",
-        images: [
-            "/images/bikes/bike-01.jpg",
-            "/images/bikes/bike-02.jpg",
-            "/images/bikes/bike-03.jpg"
-        ],
-        description: "A versatile hybrid bike perfect for commuting and fitness riding. Features hydraulic disc brakes and a lightweight aluminum frame.",
+        name: "Surron Light Bee X",
+        type: "Electric Dirt Bike",
+        price: 4295,
+        condition: "New",
+        image: BIKE_IMG("surron-lightx-1.webp"),
+        images: [BIKE_IMG("surron-lightx-2.jpg"), BIKE_IMG("surron-lightx-1.webp"), BIKE_IMG("surron-lightx-3.jpg")],
+        description: "The iconic Surron Light Bee X – lightweight electric dirt bike with 8kW peak motor (2025), 60V 40Ah lithium-ion battery, and adjustable KYB suspension. Perfect for trail riding and off-road fun. 0–31 mph in 2.7 seconds, up to 75 km/h top speed. Curb weight 57 kg.",
         specs: {
-            frame: "Alpha Gold Aluminum",
-            fork: "Carbon, straight blade",
-            gears: "27-speed",
-            brakes: "Shimano hydraulic disc",
-            wheels: "700c",
-            weight: "11.5 kg",
-            color: "Matte Trek Black"
+            frame: "Forged aluminum alloy",
+            fork: "KYB inverted, 200mm travel",
+            gears: "Single speed (direct drive)",
+            brakes: "Hydraulic disc front & rear",
+            wheels: "19\" front / 18\" rear",
+            weight: "57 kg",
+            color: "Carbon Black"
         }
     },
     {
         id: 2,
-        name: "Giant Talon 2 Mountain Bike",
-        type: "Mountain",
-        price: 525,
-        condition: "Very Good",
-        image: "/images/bikes/bike-04.jpg",
-        images: [
-            "/images/bikes/bike-04.jpg",
-            "/images/bikes/bike-05.jpg",
-            "/images/bikes/bike-06.jpg"
-        ],
-        description: "Trail-ready hardtail mountain bike with ALUXX-grade aluminum frame and 100mm travel suspension fork.",
+        name: "Surron Ultra Bee",
+        type: "Electric Dirt Bike",
+        price: 6495,
+        condition: "New",
+        image: BIKE_IMG("surron-ultra-bee.jpg"),
+        images: [BIKE_IMG("surron-ultra-bee.jpg"), BIKE_IMG("surron-ultra-bee.jpg"), BIKE_IMG("surron-ultra-bee.jpg")],
+        description: "Step up to the Surron Ultra Bee – 12.5kW peak motor, 74V 55Ah battery, and premium fully adjustable 240mm KYB inverted fork. More power, longer range (~140 km), traction control and regenerative braking. Built for intermediate to experienced riders. Weight 85 kg.",
         specs: {
-            frame: "ALUXX-Grade Aluminum",
-            fork: "SR Suntour XCM 32, 100mm travel",
-            gears: "24-speed (3x8)",
-            brakes: "Tektro mechanical disc",
-            wheels: "27.5\"",
-            weight: "14.2 kg",
-            color: "Metallic Black"
+            frame: "Reinforced aluminum",
+            fork: "KYB inverted, 240mm, adjustable",
+            gears: "Single speed (direct drive)",
+            brakes: "Hydraulic disc, regenerative",
+            wheels: "19\" front / 18\" rear",
+            weight: "85 kg",
+            color: "Storm Gray"
         }
     },
     {
         id: 3,
-        name: "Specialized Sirrus X 2.0",
-        type: "Fitness",
-        price: 445,
-        condition: "Good",
-        image: "/images/bikes/bike-07.jpg",
-        images: [
-            "/images/bikes/bike-07.jpg",
-            "/images/bikes/bike-08.jpg",
-            "/images/bikes/bike-09.jpg"
-        ],
-        description: "Perfect blend of road bike speed and mountain bike capability. Ideal for urban adventures and light trail riding.",
+        name: "Surron Storm Bee",
+        type: "Electric Dirt Bike",
+        price: 8995,
+        condition: "New",
+        image: BIKE_IMG("surron-storm-bee.jpg"),
+        images: [BIKE_IMG("surron-storm-bee.jpg"), BIKE_IMG("surron-storm-bee.jpg"), BIKE_IMG("surron-storm-bee.jpg")],
+        description: "Full-size Surron Storm Bee – 22.5kW peak, 96V 48Ah battery. Built for motocross, enduro and track. The most powerful Surron with race-ready performance and premium components. Full-size moto geometry.",
         specs: {
-            frame: "A1 Premium Aluminum",
-            fork: "Steel, tapered",
-            gears: "16-speed (2x8)",
-            brakes: "Tektro hydraulic disc",
-            wheels: "700c",
-            weight: "12.8 kg",
-            color: "Gloss Dove Gray"
+            frame: "Full-size moto aluminum",
+            fork: "Premium inverted, 270mm",
+            gears: "Single speed (direct drive)",
+            brakes: "High-performance hydraulic disc",
+            wheels: "21\" front / 18\" rear",
+            weight: "127 kg",
+            color: "Racing Red"
         }
     },
     {
         id: 4,
-        name: "Cannondale Quick 4",
-        type: "Urban",
-        price: 395,
-        condition: "Excellent",
-        image: "/images/bikes/bike-10.jpg",
-        images: [
-            "/images/bikes/bike-10.jpg",
-            "/images/bikes/bike-11.jpg",
-            "/images/bikes/bike-12.jpg"
-        ],
-        description: "Lightweight urban commuter with reliable components. Perfect for daily city riding and fitness.",
+        name: "Surron Light Bee L1e (Road Legal)",
+        type: "Electric Motorcycle",
+        price: 4695,
+        condition: "New",
+        image: BIKE_IMG("lte-1.jpg"),
+        images: [BIKE_IMG("lte-1.jpg"), BIKE_IMG("l1e-2.jpg")],
+        description: "Road-legal Surron Light Bee L1e – same platform as the Light Bee X with 4kW continuous power, restricted to 28 mph. Includes mirrors, indicators, horn and number plate mount. CBT licence required (16+). Ideal for urban and green-lane use.",
         specs: {
-            frame: "SmartForm C3 Alloy",
-            fork: "Rigid alloy",
-            gears: "18-speed (2x9)",
-            brakes: "Promax mechanical disc",
-            wheels: "700c",
-            weight: "11.9 kg",
-            color: "Agave"
+            frame: "High-strength aluminum",
+            fork: "KYB inverted",
+            gears: "Single speed (direct drive)",
+            brakes: "Hydraulic disc",
+            wheels: "19\" / 18\"",
+            weight: "52 kg",
+            color: "White / Black"
         }
     },
     {
         id: 5,
-        name: "Boardman MTB 8.6",
-        type: "Mountain",
-        price: 575,
+        name: "Specialized Turbo Vado 5.0",
+        type: "E-Bike (Commuter)",
+        price: 4299,
         condition: "Excellent",
-        image: "/images/bikes/bike-13.jpg",
-        images: [
-            "/images/bikes/bike-13.jpg",
-            "/images/bikes/bike-06.jpg",
-            "/images/bikes/bike-05.jpg"
-        ],
-        description: "Quality hardtail mountain bike with hydraulic disc brakes and 27.5\" wheels for excellent trail performance.",
+        image: BIKE_IMG("turbo-1.jpg"),
+        images: [BIKE_IMG("turbo-1.jpg"), BIKE_IMG("turbo-2.webp")],
+        description: "Premium commuter e-bike with Specialized 1.3 motor (250W, belt-driven, Rx Street Tune) and 710Wh integrated battery. Smooth, quiet assistance up to 28 mph. Hydraulic disc brakes, integrated lights and lock. Ready for daily urban and mixed-terrain use.",
         specs: {
-            frame: "6061 T6 Aluminum",
-            fork: "RockShox Judy, 100mm",
-            gears: "20-speed (2x10)",
+            frame: "Specialized aluminum",
+            fork: "Front suspension, 50mm",
+            gears: "10-speed Shimano Deore",
             brakes: "Shimano hydraulic disc",
-            wheels: "27.5\"",
-            weight: "13.5 kg",
-            color: "Matte Black/Red"
+            wheels: "700c",
+            weight: "24 kg",
+            color: "Gloss Black"
         }
     },
     {
         id: 6,
-        name: "Cube Attention SL",
-        type: "Mountain",
-        price: 625,
-        condition: "Very Good",
-        image: "/images/bikes/bike-14.jpg",
-        images: [
-            "/images/bikes/bike-14.jpg",
-            "/images/bikes/bike-04.jpg",
-            "/images/bikes/bike-06.jpg"
-        ],
-        description: "Premium hardtail with great components including air suspension fork and Shimano drivetrain.",
+        name: "Trek Allant+ 7",
+        type: "E-Bike (Hybrid)",
+        price: 3699,
+        condition: "Excellent",
+        image: BIKE_IMG("art-placeholder.jpg"),
+        images: [BIKE_IMG("art-placeholder.jpg"), BIKE_IMG("art-placeholder.jpg")],
+        description: "Trek Allant+ 7 with Bosch Performance Line motor (250W, 85 Nm) and 625Wh Powertube battery. Hydroformed aluminium frame, SR Suntour XCR32 fork, 10-speed Shimano CUES. Integrated lighting, mudguards and MIK rear rack. Up to 20 mph assist (UK legal). Weight 21.9 kg.",
         specs: {
-            frame: "Aluminum Superlite",
-            fork: "RockShox Recon Silver, 120mm",
-            gears: "22-speed (2x11)",
+            frame: "Trek Alpha Aluminum",
+            fork: "SR Suntour XCR32, 63mm",
+            gears: "10-speed Shimano CUES",
             brakes: "Shimano hydraulic disc",
-            wheels: "29\"",
-            weight: "13.2 kg",
-            color: "Blue/Orange"
+            wheels: "27.5\"",
+            weight: "21.9 kg",
+            color: "Lithium Grey"
         }
     },
     {
         id: 7,
-        name: "Scott Speedster 40",
-        type: "Road",
-        price: 685,
-        condition: "Excellent",
-        image: "/images/bikes/bike-15.jpg",
-        images: [
-            "/images/bikes/bike-15.jpg",
-            "/images/bikes/bike-16.jpg",
-            "/images/bikes/bike-01.jpg"
-        ],
-        description: "Lightweight road bike with carbon fork and Shimano drivetrain. Perfect for fast road riding and sportives.",
+        name: "Cube Kathmandu Hybrid Pro 625",
+        type: "E-Bike (Touring)",
+        price: 3899,
+        condition: "Very Good",
+        image: BIKE_IMG("art-placeholder.jpg"),
+        images: [BIKE_IMG("art-placeholder.jpg"), BIKE_IMG("art-placeholder.jpg")],
+        description: "Cube Kathmandu Hybrid Pro 625 – Bosch Performance Line, 625Wh battery, full touring spec with mudguards, pannier rack and lights. Perfect for long-distance e-touring and loaded commuting.",
         specs: {
-            frame: "Scott Speedster Alloy",
-            fork: "Full carbon",
-            gears: "20-speed (2x10)",
-            brakes: "Shimano dual pivot caliper",
-            wheels: "700c",
-            weight: "9.8 kg",
-            color: "Dark Gray/Yellow"
+            frame: "Cube Aluminum Superlite",
+            fork: "Suntour NCX, 63mm",
+            gears: "11-speed Shimano Deore",
+            brakes: "Shimano hydraulic disc",
+            wheels: "28\"",
+            weight: "26 kg",
+            color: "Grey / Green"
         }
     },
     {
         id: 8,
-        name: "Whyte 605 V2",
-        type: "Mountain",
-        price: 725,
-        condition: "Very Good",
-        image: "/images/bikes/bike-01.jpg",
-        images: [
-            "/images/bikes/bike-01.jpg",
-            "/images/bikes/bike-05.jpg",
-            "/images/bikes/bike-04.jpg"
-        ],
-        description: "UK-designed trail bike with progressive geometry. Perfect for technical trails and all-mountain riding.",
+        name: "Haibike AllMtn 7",
+        type: "E-MTB",
+        price: 5499,
+        condition: "Excellent",
+        image: BIKE_IMG("art-placeholder.jpg"),
+        images: [BIKE_IMG("art-placeholder.jpg"), BIKE_IMG("art-placeholder.jpg")],
+        description: "Haibike AllMtn 7 – full suspension e-MTB with Bosch Performance CX, 750Wh battery and 150mm travel. Trail-ready geometry for serious off-road and mountain use. Premium build with Fox suspension.",
         specs: {
-            frame: "6061 T6 Aluminum",
-            fork: "RockShox Recon RL, 130mm",
-            gears: "22-speed (2x11)",
+            frame: "Aluminum, 150mm travel",
+            fork: "Fox 36 Rhythm, 150mm",
+            gears: "12-speed Shimano SLX",
             brakes: "Shimano hydraulic disc",
             wheels: "29\"",
-            weight: "13.8 kg",
-            color: "Stealth"
-        }
-    },
-    {
-        id: 9,
-        name: "Raleigh Strada 3",
-        type: "Hybrid",
-        price: 345,
-        condition: "Good",
-        image: "/images/bikes/bike-08.jpg",
-        images: [
-            "/images/bikes/bike-08.jpg",
-            "/images/bikes/bike-07.jpg",
-            "/images/bikes/bike-10.jpg"
-        ],
-        description: "Classic British hybrid bike ideal for commuting. Features comfortable geometry and reliable components.",
-        specs: {
-            frame: "6061 Aluminum",
-            fork: "Hi-Tensile steel",
-            gears: "21-speed (3x7)",
-            brakes: "V-brakes",
-            wheels: "700c",
-            weight: "14.5 kg",
-            color: "Silver/Blue"
-        }
-    },
-    {
-        id: 10,
-        name: "Merida Big.Nine 100",
-        type: "Mountain",
-        price: 595,
-        condition: "Excellent",
-        image: "/images/bikes/bike-06.jpg",
-        images: [
-            "/images/bikes/bike-06.jpg",
-            "/images/bikes/bike-04.jpg",
-            "/images/bikes/bike-14.jpg"
-        ],
-        description: "29er hardtail mountain bike offering great value and performance for XC riding.",
-        specs: {
-            frame: "Big.Nine TFS Aluminum",
-            fork: "Suntour XCR32, 100mm",
-            gears: "20-speed (2x10)",
-            brakes: "Shimano hydraulic disc",
-            wheels: "29\"",
-            weight: "13.9 kg",
-            color: "Matt Black/Green"
-        }
-    },
-    {
-        id: 11,
-        name: "Carrera Subway 1",
-        type: "Hybrid",
-        price: 285,
-        condition: "Good",
-        image: "/images/bikes/bike-09.jpg",
-        images: [
-            "/images/bikes/bike-09.jpg",
-            "/images/bikes/bike-12.jpg",
-            "/images/bikes/bike-08.jpg"
-        ],
-        description: "Budget-friendly hybrid perfect for casual riding and short commutes. Features comfortable upright position.",
-        specs: {
-            frame: "Aluminum",
-            fork: "Steel rigid",
-            gears: "21-speed (3x7)",
-            brakes: "V-brakes",
-            wheels: "700c",
-            weight: "15.2 kg",
-            color: "Dark Gray"
-        }
-    },
-    {
-        id: 12,
-        name: "Vitus Nucleus 27 VR",
-        type: "Mountain",
-        price: 545,
-        condition: "Very Good",
-        image: "/images/bikes/bike-05.jpg",
-        images: [
-            "/images/bikes/bike-05.jpg",
-            "/images/bikes/bike-06.jpg",
-            "/images/bikes/bike-13.jpg"
-        ],
-        description: "Excellent entry-level trail bike with modern geometry and hydraulic disc brakes.",
-        specs: {
-            frame: "6061-T6 Aluminum",
-            fork: "SR Suntour XCR, 120mm",
-            gears: "20-speed (2x10)",
-            brakes: "Shimano hydraulic disc",
-            wheels: "27.5\"",
-            weight: "14.1 kg",
-            color: "Blue/Red"
-        }
-    },
-    {
-        id: 13,
-        name: "Ridgeback Motion",
-        type: "Hybrid",
-        price: 375,
-        condition: "Excellent",
-        image: "/images/bikes/bike-12.jpg",
-        images: [
-            "/images/bikes/bike-12.jpg",
-            "/images/bikes/bike-09.jpg",
-            "/images/bikes/bike-08.jpg"
-        ],
-        description: "Quality British-designed hybrid with comfortable geometry. Perfect for leisure rides and fitness.",
-        specs: {
-            frame: "6061 T6 Aluminum",
-            fork: "Alloy rigid",
-            gears: "24-speed (3x8)",
-            brakes: "V-brakes",
-            wheels: "700c",
-            weight: "13.5 kg",
-            color: "Silver"
-        }
-    },
-    {
-        id: 14,
-        name: "Marin Bobcat Trail 4",
-        type: "Mountain",
-        price: 585,
-        condition: "Very Good",
-        image: "/images/bikes/bike-13.jpg",
-        images: [
-            "/images/bikes/bike-13.jpg",
-            "/images/bikes/bike-14.jpg",
-            "/images/bikes/bike-05.jpg"
-        ],
-        description: "Trail-capable hardtail with excellent components and aggressive geometry for confident riding.",
-        specs: {
-            frame: "Series 2 6061 Aluminum",
-            fork: "SR Suntour XCR32, 100mm",
-            gears: "18-speed (2x9)",
-            brakes: "Tektro hydraulic disc",
-            wheels: "27.5\"",
-            weight: "13.7 kg",
-            color: "Gloss Black/Yellow"
-        }
-    },
-    {
-        id: 15,
-        name: "Dawes Discovery 301",
-        type: "Touring",
-        price: 425,
-        condition: "Good",
-        image: "/images/bikes/bike-11.jpg",
-        images: [
-            "/images/bikes/bike-11.jpg",
-            "/images/bikes/bike-07.jpg",
-            "/images/bikes/bike-12.jpg"
-        ],
-        description: "Classic touring bike with rack mounts and comfortable geometry. Perfect for long-distance riding.",
-        specs: {
-            frame: "Chromoly steel",
-            fork: "Chromoly steel",
-            gears: "27-speed (3x9)",
-            brakes: "V-brakes",
-            wheels: "700c",
-            weight: "14.8 kg",
-            color: "Green"
-        }
-    },
-    {
-        id: 16,
-        name: "GT Aggressor Expert",
-        type: "Mountain",
-        price: 465,
-        condition: "Excellent",
-        image: "/images/bikes/bike-14.jpg",
-        images: [
-            "/images/bikes/bike-14.jpg",
-            "/images/bikes/bike-04.jpg",
-            "/images/bikes/bike-05.jpg"
-        ],
-        description: "Durable mountain bike with classic GT styling. Great for trail riding and everyday adventures.",
-        specs: {
-            frame: "GT Aluminum",
-            fork: "SR Suntour XCT, 100mm",
-            gears: "21-speed (3x7)",
-            brakes: "Mechanical disc",
-            wheels: "27.5\"",
-            weight: "14.5 kg",
-            color: "Satin Blue"
+            weight: "24.5 kg",
+            color: "Matt Slate"
         }
     }
 ];

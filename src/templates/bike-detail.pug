@@ -1,93 +1,86 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title= `${bike.name} - Greens Repairs Ltd`
-    meta(name='description' content=`${bike.description} - £${bike.price} - ${bike.condition} condition`)
-    meta(property='og:title' content=`${bike.name} - Greens Repairs Ltd`)
-    meta(property='og:description' content=bike.description)
-    meta(property='og:image' content=bike.image)
-    link(rel='preconnect' href='https://fonts.googleapis.com')
-    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
-    link(href='https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap' rel='stylesheet')
-    link(rel='stylesheet' href='/css/styles.css')
-    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
-  
-  body
-    include ../components/header.pug
-    
-    #smooth-wrapper
-      #smooth-content
-        //- Back to Shop
-        section.breadcrumb
-          .container
-            a.back-link(href='/shop.html')
-              i.fas.fa-arrow-left
-              |  Back to Shop
+extends layout.pug
 
-        //- Bike Detail
-        section.bike-detail
-          .container
-            .bike-detail-grid
-              .bike-gallery
-                .swiper
-                  .swiper-wrapper
-                    each image in bike.images
-                      .swiper-slide
-                        img(src=image alt=bike.name)
-                  .swiper-pagination
-                  .swiper-button-prev
-                  .swiper-button-next
-              
-              .bike-details
-                h1= bike.name
-                p.bike-price-large £#{bike.price}
-                span.bike-condition #{bike.condition} Condition
-                p.bike-description= bike.description
-                
-                .bike-specs
-                  h3 Specifications
-                  .specs-grid
-                    .spec-item
-                      span.spec-label Type
-                      span.spec-value= bike.type
-                    .spec-item
-                      span.spec-label Frame
-                      span.spec-value= bike.specs.frame
-                    .spec-item
-                      span.spec-label Fork
-                      span.spec-value= bike.specs.fork
-                    .spec-item
-                      span.spec-label Gears
-                      span.spec-value= bike.specs.gears
-                    .spec-item
-                      span.spec-label Brakes
-                      span.spec-value= bike.specs.brakes
-                    .spec-item
-                      span.spec-label Wheels
-                      span.spec-value= bike.specs.wheels
-                    .spec-item
-                      span.spec-label Weight
-                      span.spec-value= bike.specs.weight
-                    .spec-item
-                      span.spec-label Color
-                      span.spec-value= bike.specs.color
-                
-                .contact-seller
-                  h3 Interested in this bike?
-                  .contact-buttons
-                    a.btn.btn-primary(href='tel:+447402665293')
-                      i.fas.fa-phone
-                      |  Call Us
-                    a.btn.btn-secondary(href=`mailto:Greens.repairs9@outlook.com?subject=Inquiry about ${bike.name}`)
-                      i.fas.fa-envelope
-                      |  Email Us
-                    a.btn.btn-outline(href='/contact.html')
-                      i.fas.fa-map-marker-alt
-                      |  Visit Our Shop
+block variables
+  - var pageTitle = `${bike.name} - Greens Repairs Ltd`
+  - var metaDescription = `${bike.description} - £${bike.price} - ${bike.condition} condition`
+  - var ogTitle = `${bike.name} - Greens Repairs Ltd`
+  - var ogDescription = bike.description
+  - var ogImage = bike.images && bike.images[0] ? bike.images[0] : bike.image
 
-        include ../components/footer.pug
+block content
+  //- Back to Shop
+  section.breadcrumb
+    .container
+      a.back-link(href='/shop.html')
+        i.fas.fa-arrow-left
+        |  Back to Shop
 
-    script(type='module' src='/js/script.js')
-    script(type='module' src='/js/bike-swiper.js')
+  //- Bike Detail
+  section.bike-detail
+    .container
+      .bike-detail-grid
+        .bike-gallery
+          .swiper
+            .swiper-wrapper
+              each image in bike.images
+                .swiper-slide
+                  img(src=image alt=bike.name)
+            .swiper-pagination
+            .swiper-button-prev
+            .swiper-button-next
+
+        .bike-details
+          h1= bike.name
+          p.bike-price-large £#{bike.price}
+          span.bike-condition #{bike.condition} Condition
+          p.bike-description= bike.description
+
+          .bike-specs
+            h3 Specifications
+            .specs-grid
+              .spec-item
+                span.spec-label Type
+                span.spec-value= bike.type
+              .spec-item
+                span.spec-label Frame
+                span.spec-value= bike.specs.frame
+              .spec-item
+                span.spec-label Fork
+                span.spec-value= bike.specs.fork
+              .spec-item
+                span.spec-label Gears
+                span.spec-value= bike.specs.gears
+              .spec-item
+                span.spec-label Brakes
+                span.spec-value= bike.specs.brakes
+              .spec-item
+                span.spec-label Wheels
+                span.spec-value= bike.specs.wheels
+              .spec-item
+                span.spec-label Weight
+                span.spec-value= bike.specs.weight
+              .spec-item
+                span.spec-label Color
+                span.spec-value= bike.specs.color
+
+          .contact-seller
+            h3 Interested in this bike?
+            .contact-buttons
+              a.btn.btn-primary(href='tel:+447402665293')
+                i.fas.fa-phone
+                |  Call Us
+              a.btn.btn-secondary(href=`mailto:Greens.repairs9@outlook.com?subject=Inquiry about ${bike.name}`)
+                i.fas.fa-envelope
+                |  Email Us
+              - var serviceUrl = '/contact.html?bike=' + encodeURIComponent(bike.name)
+              a.btn.btn-primary(href=serviceUrl)
+                i.fas.fa-wrench
+                |  Book a Service
+              a.btn.btn-outline(href='/contact.html')
+                i.fas.fa-map-marker-alt
+                |  Visit Our Shop
+
+  include ../components/footer.pug
+
+block append scripts
+  script(type='module' src='/js/bike-swiper.js')

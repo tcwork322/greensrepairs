@@ -1,39 +1,13 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import pug from 'pug';
+import { bikesData } from '../js/bikes-data.js';
+import { generateSlug } from '../js/utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const projectRoot = join(__dirname, '..');
-
-// Function to generate URL-friendly slug from bike name
-function generateSlug(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-')      // Replace spaces with hyphens
-    .replace(/-+/g, '-')       // Replace multiple hyphens with single hyphen
-    .trim();
-}
-
-// Read bikes data
-const bikesDataPath = join(projectRoot, 'js', 'bikes-data.js');
-let bikesDataContent = readFileSync(bikesDataPath, 'utf-8');
-
-// Extract the bikesData array from the JS file
-const match = bikesDataContent.match(/const bikesData = (\[[\s\S]*?\]);/);
-if (!match) {
-  console.error('Could not find bikesData in bikes-data.js');
-  process.exit(1);
-}
-
-const bikesData = eval(match[1]);
-
-// Add slugs to each bike
-bikesData.forEach(bike => {
-  bike.slug = generateSlug(bike.name);
-});
 
 // Create bikes directory if it doesn't exist
 const bikesDir = join(projectRoot, 'bikes');
@@ -48,19 +22,30 @@ const compiledFunction = pug.compileFile(templatePath, {
   basedir: projectRoot
 });
 
+// Set of current slugs (so we can remove old bike pages)
+const currentSlugs = new Set(bikesData.map((bike) => generateSlug(bike.name)));
+
 // Generate a page for each bike
 bikesData.forEach((bike) => {
+  const slug = generateSlug(bike.name);
   console.log(`Generating page for: ${bike.name}`);
-  
-  // Generate HTML from template
+
   const html = compiledFunction({ bike });
-  
-  // Write to bikes directory using slug
-  const filename = `${bike.slug}.html`;
+  const filename = `${slug}.html`;
   const filepath = join(bikesDir, filename);
   writeFileSync(filepath, html, 'utf-8');
-  
+
   console.log(`  ✓ Created bikes/${filename}`);
+});
+
+// Remove old bike HTML files no longer in inventory
+const existingFiles = readdirSync(bikesDir).filter((f) => f.endsWith('.html'));
+existingFiles.forEach((file) => {
+  const slug = file.replace(/\.html$/, '');
+  if (!currentSlugs.has(slug)) {
+    unlinkSync(join(bikesDir, file));
+    console.log(`  🗑 Removed bikes/${file}`);
+  }
 });
 
 console.log(`\n✨ Generated ${bikesData.length} bike pages!`);
